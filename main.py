@@ -126,7 +126,7 @@ print(" ")
 # F Wariancja:  0.1115062551398405
 # Wniosek: Można założyć równość wariancji - wykonać test pooled t-test
 # Pooled t-test:  Ttest_indResult(statistic=-0.48380298879955297, pvalue=0.6286510439228146)
-# Wniosek: Różnica wagi (KgBefore) dla dwóch grup (kobiet i mężczyzn) jest statystycznie różna.
+# Wniosek: Różnica średniej wagi (KgBefore) dla dwóch grup (kobiet i mężczyzn) jest statystycznie różna.
 ###### survey_2 ######
 
 print("")
