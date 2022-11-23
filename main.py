@@ -21,8 +21,14 @@ print(" ")
 # print(men_shapiro_wilk_test)
 # print(women_shapiro_wilk_test)
 # print(mannwhitneyu_test)
-###### heart_1 ######
 
+# Wynik:
+# ShapiroResult(statistic=0.9283308982849121, pvalue=0.0001264826423721388)
+# ShapiroResult(statistic=0.9843645691871643, pvalue=0.038928914815187454)
+# Wniosek: Rozkład różny od normalnego, bo pvalue < 0.05 (5%)
+# MannwhitneyuResult(statistic=1.0, pvalue=0.34926767915166934)
+# Wniosek: MaxHeartRate jest statycztycznie różne dla różnych płci
+###### heart_1 ######
 
 ###### heart_2 ######
 # filename = 'heart/heart_2.csv'
@@ -65,7 +71,7 @@ print(" ")
 # Wniosek: Istotna różnica dla pary Po59 i Miedzy51i59
 ###### heart_2 ######
 
-###### survey ######
+###### survey_1 ######
 # filename = 'gym/survey.csv'
 # dataset = pd.read_csv(filename, delimiter=";")
 
@@ -86,6 +92,41 @@ print(" ")
 # Wniosek: Rozkład normalny dla obu grup.
 # Paired t-test:  Ttest_relResult(statistic=28.43292751032821, pvalue=2.411765476943316e-125)
 # Wniosek: Hipoteza zerowa odrzucona - sterydy mają wpływ na wzros masy.
-###### survey ######
+###### survey_1 ######
+
+###### survey_2 ######
+# filename = 'gym/survey.csv'
+# dataset = pd.read_csv(filename, delimiter=";")
+
+# M_df = dataset[dataset['Gender'] == "M"] 
+# F_df = dataset[dataset['Gender'] == "F"] 
+
+# M_KgBefore_array = M_df.loc[:,"KgBefore"].to_numpy()
+# F_KgBefore_array = F_df.loc[:,"KgBefore"].to_numpy()
+
+# M_shapiro_wilk_test = stats.shapiro(M_KgBefore_array)
+# F_shapiro_wilk_test = stats.shapiro(F_KgBefore_array)
+
+# M_variation = stats.variation(M_KgBefore_array)
+# F_variation = stats.variation(F_KgBefore_array)
+
+# pooled_t_test = stats.ttest_ind(M_KgBefore_array, F_KgBefore_array, equal_var=True)
+
+# print("M Waga: ", M_shapiro_wilk_test)
+# print("F Waga: ", F_shapiro_wilk_test)
+# print("M Wariancja: ", M_variation)
+# print("F Wariancja: ", F_variation)
+# print("Pooled t-test: ", pooled_t_test)
+
+# Wynik:
+# M Waga:  ShapiroResult(statistic=0.9956157207489014, pvalue=0.21933318674564362)
+# F Waga:  ShapiroResult(statistic=0.996745765209198, pvalue=0.6401481628417969)
+# Wniosek: Rozkład normalny dla obu grup
+# M Wariancja:  0.12029633133680917
+# F Wariancja:  0.1115062551398405
+# Wniosek: Można założyć równość wariancji - wykonać test pooled t-test
+# Pooled t-test:  Ttest_indResult(statistic=-0.48380298879955297, pvalue=0.6286510439228146)
+# Wniosek: Różnica wagi (KgBefore) dla dwóch grup (kobiet i mężczyzn) jest statystycznie różna.
+###### survey_2 ######
 
 print("")
